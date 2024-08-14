@@ -14,7 +14,7 @@ import { useSession } from "next-auth/react"
 import { toast } from "sonner"
 import { getBookings } from "../_actions/get-bookings"
 import { Dialog, DialogContent } from "./ui/dialog"
-import SignInDialog from "./sign-in0-dialog"
+import SignInDialog from "./sign-in-dialog"
 
 interface ServiceItemProps {
   service: BarbershopService
@@ -54,10 +54,7 @@ const getTimeList = ({ bookings, selectedDay }: GetTimeListProps) => {
     const hour = Number(time.split(":")[0])
     const minutes = Number(time.split(":")[1])
 
-    const timeIsOnThePast = isPast(
-      set(newDate(), { hours: hour, minutes: minutes }),
-    )
-
+    const timeIsOnThePast = isPast(set(new Date(), { hours: hour, minutes }))
     if (timeIsOnThePast && isToday(selectedDay)) {
       return false
     }
@@ -224,7 +221,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                   </div>
 
                   {selectedDay && (
-                    <div className="[&:: -webkit-scrollbar:hidden] flex gap-3 overflow-x-auto border-b border-solid p-5">
+                    <div className="flex gap-3 overflow-x-auto border-b border-solid p-5 [&::-webkit-scrollbar]:hidden">
                       {timeList.length > 0 ? (
                         timeList.map((time) => (
                           <Button
@@ -312,6 +309,3 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
 }
 
 export default ServiceItem
-function newDate(): any {
-  throw new Error("Function not implemented.")
-}

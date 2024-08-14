@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 
 import { signOut, useSession } from "next-auth/react"
 import { Avatar, AvatarImage } from "./ui/avatar"
-import SignInDialog from "./sign-in0-dialog"
+import SignInDialog from "./sign-in-dialog"
 
 const SideBarButton = () => {
   const { data } = useSession()
