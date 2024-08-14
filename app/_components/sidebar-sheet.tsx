@@ -64,10 +64,12 @@ const SideBarButton = () => {
         </SheetClose>
 
         <Button className="justify-start gap-2" variant="ghost" asChild>
-          <div className="flex items-center gap-2">
-            <CalendarIcon size={18} />
-            Agendamentos
-          </div>
+          <Link href="/bookings">
+            <div className="flex items-center gap-2">
+              <CalendarIcon size={18} />
+              Agendamentos
+            </div>
+          </Link>
         </Button>
       </div>
 
